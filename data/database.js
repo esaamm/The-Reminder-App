@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 export const connectDB = () => {
-//   console.log(process.env.MONGO_URI);
+  //   console.log(process.env.MONGO_URI);
 
   mongoose
-    .connect("mongodb://127.0.0.1:27017", {
+    .connect(process.env.MONGO_URI, {
       dbName: "BackendAPP",
     })
-    .then(() => console.log("Database Connected"))
+    .then((c) => console.log(`Database Connected with ${c.connection.host}`))
     .catch((e) => console.log(e));
 };
